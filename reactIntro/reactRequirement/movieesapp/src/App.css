@@ -1,0 +1,182 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.banner-card{
+  position: relative;
+  margin-top: .5rem;
+  margin-bottom: .5rem;
+  height: 70vh;
+}
+.banner-img{
+  width: 100vw;
+  height: 70vh;
+color: white;
+}
+.banner-title{
+position: absolute;
+bottom: 15rem;
+color: white;
+margin-left: 5rem;
+font-size: 2rem;
+}
+.banner-text{
+  width: 70vw;
+  position: absolute;
+  color: white;
+  margin-top:16.5rem;
+  margin-left: 5rem;
+  }
+  .moviesDev{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    
+   
+  }
+  .movie-img{
+    position: absolute;
+    width: 20vw;
+    height: 40vh;
+  }
+  .movie-card{
+   
+    position: relative;
+    width: 20vw;
+    height: 40vh;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    
+  }
+  .movie-btn{
+    position: absolute;
+    bottom: 2rem;
+  }
+.movie-title{
+    position: absolute;
+    top:1.8rem;
+    color: white;
+    margin-left: 1.5rem;
+    font-size: 1.4rem;
+}
+.genre-selector{
+      padding: 3rem;
+      
+}
+.favourites-table{
+      padding: 3rem;
+      overflow: auto;
+}
+
+@media screen and (max-width:500px){
+  .banner-card{
+    height:30vh;
+  }
+  .banner-img{
+    height: 30vh;
+  }
+  .banner-title{
+    top: 12vh;
+    left: 5vw
+  }
+  .banner-text{
+    top: 17vh;
+    left: 1.5rem;
+  
+  }
+  
+  .moviesDev{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin:-.5rem;
+   
+  }
+  .movie-img{
+    position: absolute;
+    width: 40vw;
+    height: 40vh;
+  }
+  .movie-card{
+   
+    position: relative;
+    width: 40vw;
+    height: 40vh;
+    margin-top: 1.5rem;
+    margin-left: 1rem;
+    
+  }
+  .movie-btn{
+    position: absolute;
+    bottom: 2rem;
+    font-size: 1.1rem;
+    width: 35vw;
+    height: 8vh;
+  }
+.movie-title{
+    position: absolute;
+    top:1.8rem;
+    color: white;
+    margin-left: 1.5rem;
+    font-size: 1.4rem;
+}
+.table-popularity{
+  display: none;
+}
+.td-popularity{
+  display: none;
+}
+.table-rating{
+  display: none;
+}
+.td-rating{
+  display: none;
+}
+.table-genre{
+  display: none;
+}
+.td-genre{
+  display: none;
+}
+}
+
+
+
+  

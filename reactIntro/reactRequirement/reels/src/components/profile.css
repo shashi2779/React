@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* font-family: 'montserrat'; */
+}
+html,body{
+    width: 100vw;
+    height: 100vh;
+}
+.nav{
+    height: 2rem;
+    border: 1.5px solid gray;
+}
+.main{
+    position: relative;
+    display: flex;
+    align-items: center;
+    
+}
+.pImg{
+
+    width: 10rem;
+    height: 10rem;
+    border-radius: 50%;
+    margin-top: 4rem;
+    margin-left: 10rem;
+}
+.details{
+position: absolute;
+margin-top: 3rem;
+margin-left: 24rem;
+}
