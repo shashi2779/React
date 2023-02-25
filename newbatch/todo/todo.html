@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function InputBox(props) {
+            const [cVal,setVal] = React.useState("")
+
+            let getVal = (e)=>{
+                 setVal(e.target.value)
+    
+            }
+
+            let addTask = ()=>{
+                props.getCurrentVal(cVal)
+                setVal('')
+            }
+            return (
+                <>
+                    <input value={cVal} onChange={getVal}/>
+                    <button onClick={addTask}>Add task</button>
+                </>
+            )
+        }
+
+        function ListItems(props) {
+
+            let tasks = props.task
+            return (
+                <>
+                    <ul>
+                        {
+                          tasks.map(function(tasks,idx){
+                            return  <li key={idx}>{tasks}</li>
+                          })
+                        }
+                        
+
+                    </ul>
+                </>
+            )
+        }
+
+        function Todo() {
+            const [task,setTask] = React.useState([])
+
+
+            let valAayi = (currentVal)=>{
+                    
+                    let updateVal = [...task]
+                    updateVal.push(currentVal)
+                    setTask(updateVal)
+                
+            }
+
+            return (
+                <>
+                    <h1>Todo App</h1>
+                    <InputBox getCurrentVal={valAayi}/>
+                    <ListItems task={task} />
+                </>
+            )
+        }
+
+        ReactDOM.render(<Todo />, document.querySelector("#root"))
+
+    </script>
+
+</body>
+
+</html>
