@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function SearchTask(props) {
+            const [type,setType] = React.useState("")
+
+            let typeFun =(e)=>{
+               setType(e.target.value)
+               
+            }
+
+            let addTask = ()=>{
+                props.getValue(type)
+                setType("")
+            }
+            
+            return (
+                
+                <>
+                    <input value={type} onChange={typeFun}/>
+                    <button onClick={addTask}>submit</button>
+                </>
+            )
+        }
+
+
+        function TaskArea(props) {
+             let task = props.task
+            return (
+                <>
+                    { 
+                        task.map((task) => {
+                            return (
+                                <ul>
+                                    <li>
+                                        <h1>{task}</h1>
+                                    </li>
+                                </ul>
+                            )
+                        })
+                    }
+
+
+                </>
+            )
+        }
+
+        function Todo() {
+            const [task, setTask] = React.useState([])
+            
+            let valueAyi =(taskVal)=>{
+                let updatedVal = [...task]
+                updatedVal.push(taskVal)
+                setTask(updatedVal) 
+
+            }
+            
+            return (
+                <>
+                    <h1>Todo</h1>
+                    <SearchTask getValue={valueAyi}/>
+                    <TaskArea task={task} />
+                </>
+            )
+        }
+
+        ReactDOM.render(<Todo />, document.getElementById("root"))
+    </script>
+
+</body>
+
+</html>
