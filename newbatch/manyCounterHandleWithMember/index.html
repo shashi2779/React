@@ -51,6 +51,9 @@
         
         function Counter(props) {
             const [count, setCount] = React.useState(0)
+           // sendMem = send member
+           // sendNum = send number
+           //count != props.sendNum - ye "infinite" loop ko rokega
             if(props.number == props.sendMem && count != props.sendNum){ 
                    setCount(props.sendNum)
             }
