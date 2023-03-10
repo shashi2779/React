@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        function MemberCounter(props) {
+            const [number, setNumber] = React.useState()
+            const [member, setMember] = React.useState()
+
+            let typeInNumber = (e) => {
+                setNumber(e.target.value)
+                console.log(e.target.value)
+
+            }
+
+            let typeInMember = (e) => {
+
+                console.log(e.target.value)
+                setMember(e.target.value)
+
+            }
+
+            let resetCounter = () =>{
+                // console.log(number,member)
+                props.newFun(number,member)
+            }
+
+            return (
+                <>
+                    <h2>counter Number:<input value={number} onChange={typeInNumber} /></h2>
+                    <h2>member:<input value={member} onChange={typeInMember} /></h2>
+                    <button onClick={resetCounter}>reset</button>
+                    <h1>======================</h1>
+                </>
+            )
+        }
+
+        
+        function Counter(props) {
+            const [count, setCount] = React.useState(0)
+            if(props.number == props.sendMem && count != props.sendNum){ 
+                   setCount(props.sendNum)
+            }
+
+            let increment = () => {
+                setCount(count + 1)
+            }
+
+            let decrement = () => {
+                if (count > 0)
+                    setCount(count - 1)
+            }
+
+            return (
+                <>
+                    <div>
+                        <button onClick={increment}>+</button>
+                        <h3>counter Number {props.number} count:{count}</h3>
+                        <button onClick={decrement}>-</button><br></br>
+                        <h1>------------------</h1>
+                    </div>
+                </>
+            )
+        }
+
+        function Counters(props) {
+            let sendNum = props.sendNum
+            let sendMem = props.sendMem
+            return (
+                <>
+                    <Counter number={1} sendNum={sendNum} sendMem={sendMem} />
+                    <Counter number={2} sendNum={sendNum} sendMem={sendMem} />
+                    <Counter number={3} sendNum={sendNum} sendMem={sendMem}  />
+
+                </>
+            )
+        }
+
+        
+        
+        function ResetCounter() {
+            const [sendNum,setsendNum] = React.useState()
+            const [sendMem,setsendMem] = React.useState()
+            
+            let valueAyi = (value1,value2) =>{
+                console.log(value1,value2)
+                setsendNum(value1)
+                setsendMem(value2)
+            }
+
+            return (
+                <>
+                    <h1>Todo App</h1>
+                    <MemberCounter newFun={valueAyi}/>
+                    <Counters sendNum={sendNum} sendMem={sendMem} />
+                </>
+            )
+        }
+
+        ReactDOM.render(<ResetCounter />, document.querySelector("#root"))
+
+    </script>
+
+</body>
+
+</html>
