@@ -53,13 +53,16 @@
             const [count, setCount] = React.useState(0)
            // sendMem = send member - 1,2,3
            // sendNum = send number
-           //count != props.sendNum - ye "infinite" loop ko rokega
+           //count != props.sendNum - ye "infinite" loop ko rokega 
             if(props.number == props.sendMem && count != props.sendNum){ 
                    setCount(props.sendNum)
+                   props.resetValueSet()
+        
+
             }
 
             let increment = () => {
-                setCount(count + 1)
+                setCount(Number(count) + 1)
             }
 
             let decrement = () => {
@@ -82,11 +85,12 @@
         function Counters(props) {
             let sendNum = props.sendNum
             let sendMem = props.sendMem
+            let resetValueSet = props.resetValueSet
             return (
                 <>
-                    <Counter number={1} sendNum={sendNum} sendMem={sendMem} />
-                    <Counter number={2} sendNum={sendNum} sendMem={sendMem} />
-                    <Counter number={3} sendNum={sendNum} sendMem={sendMem}  />
+                    <Counter number={1} sendNum={sendNum} sendMem={sendMem} resetValueSet={resetValueSet} />
+                    <Counter number={2} sendNum={sendNum} sendMem={sendMem} resetValueSet={resetValueSet} />
+                    <Counter number={3} sendNum={sendNum} sendMem={sendMem} resetValueSet={resetValueSet} />
 
                 </>
             )
@@ -100,15 +104,20 @@
             
             let valueAyi = (value1,value2) =>{
                 // console.log(value1,value2)
-                setsendNum(value1)
+                setsendNum(value1) 
                 setsendMem(value2)
+            }
+
+            let resetValueSet = () =>{
+                setsendNum("")
+                setsendMem("")
             }
 
             return (
                 <>
                     <h1>Todo App</h1>
                     <MemberCounter newFun={valueAyi}/>
-                    <Counters sendNum={sendNum} sendMem={sendMem} />
+                    <Counters sendNum={sendNum} sendMem={sendMem}  resetValueSet={resetValueSet} />
                 </>
             )
         }
