@@ -15,25 +15,25 @@
     <div id="root"></div>
 
     <script type="text/babel">
-   function Counter(prop) {
-            // jo bhi data change karna hai -> react.useState(initialvalue of that data)-> return 
-            // variable -> data ,function is also given that will change the variable
-            // let stateBelongings = React.useState(0);
-            // let count = stateBelongings[0];
-            // let changeCount = stateBelongings[1];
-            // destructuring in arrays
+  
+  function Counter(prop) {
+      
             let [count, changeCount] = React.useState(0);
+            
             let number = prop.number;
+            
             let increment = () => {
                 changeCount(count + 1);
             }
+           
             let decrement = () => {
                 changeCount(count - 1);
             }
+            
             return (
                 <div>
                     <button onClick={increment}>+</button>
-                    <p>Counter Number {number} Count :  {count}</p>
+                    <p>Counter Number - {number} Count :  {count}</p>
                     <button onClick={decrement}>-</button>
                 </div>
             )
@@ -42,14 +42,16 @@
         function Counters() {
             return <div>
                 <Counter number={1} />
+                <h1>================================</h1>
                 <Counter number={2} />
+                <h1>================================</h1>
                 <Counter number={3} />
             </div>
         }
 
-        // create five independent counters 
+        // create three independent counters 
         ReactDOM.render(<Counters />, document.querySelector("#root"));
-// bottom to top
+
 
     </script>
 
