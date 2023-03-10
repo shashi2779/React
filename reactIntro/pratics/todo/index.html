@@ -16,70 +16,67 @@
 
     <script type="text/babel">
 
-        function SearchTask(props) {
-            const [type,setType] = React.useState("")
+        function InputArea(props){
+            const [inputHai,setInput] = React.useState("")
+            
 
-            let typeFun =(e)=>{
-               setType(e.target.value)
-               
-            }
-
-            let addTask = ()=>{
-                props.getValue(type)
-                setType("")
+            let changeValue = (e)=>{
+                 setInput(e.target.value)
+                 console.log(e.target.value)
             }
             
-            return (
-                
+            let submitValue = () =>{
+                props.takeValue(inputHai)
+                // console.log(inputHai)
+            }
+          
+            return(
                 <>
-                    <input value={type} onChange={typeFun}/>
-                    <button onClick={addTask}>submit</button>
+                <input value={inputHai}  onChange={changeValue}/>
+                <button onClick={submitValue}>submit</button>
                 </>
             )
         }
 
-
-        function TaskArea(props) {
-             let task = props.task
-            return (
+        function TextInputArea(props){
+          let text = props.text
+            return(
                 <>
-                    { 
-                        task.map((task) => {
-                            return (
-                                <ul>
-                                    <li>
-                                        <h1>{task}</h1>
-                                    </li>
-                                </ul>
-                            )
-                        })
-                    }
-
-
+                 {
+                    text.map((text,idx)=>{
+                      return (
+                        <ul key={idx}>
+                           <li>{text}</li> 
+                        </ul>
+                      )
+                    })
+                 }
                 </>
             )
         }
+
 
         function Todo() {
-            const [task, setTask] = React.useState([])
-            
-            let valueAyi =(taskVal)=>{
-                let updatedVal = [...task]
-                updatedVal.push(taskVal)
-                setTask(updatedVal) 
+            const [text,setText] = React.useState([])
 
+            let valueAAyi = (valueeAAyii) =>{
+                   
+                    let textaayaa = [...text]
+                    textaayaa.push(valueeAAyii)
+                    setText(textaayaa)
             }
-            
+
             return (
                 <>
-                    <h1>Todo</h1>
-                    <SearchTask getValue={valueAyi}/>
-                    <TaskArea task={task} />
+                    <h1>Todo App</h1>
+                    <InputArea takeValue={valueAAyi}/>
+                    <TextInputArea text={text}/>
                 </>
             )
         }
 
         ReactDOM.render(<Todo />, document.getElementById("root"))
+
     </script>
 
 </body>
